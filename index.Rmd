@@ -1,5 +1,5 @@
 ---
-title: "Midpoint Deliverable"
+title: "Rock & Rollin' Through The History of Music"
 author: "The Purple Wranglers"
 date: "May 21, 2019"
 output: html_document
@@ -7,24 +7,13 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+read.csv("data/albumlist.csv")
 ```
 
-## R Markdown
+## Introduction
+How has Rolling Stones seen music change between 1955 and 2011 in the United States? We will be looking at their list of the Top 500 greatest Albums from that time period, diving in and anazlyzing their rankings. Our data is driven by information found on Kaggle's _[Rolling Stone's 500 Greatest Albums of All Time](https://www.kaggle.com/notgibs/500-greatest-albums-of-all-time-rolling-stone)_. Through various charts and graphs, we will be looking at how album popularity has changed over time, how many albums a year on average make the Top 500, and which genres appeared most often in the Top 500.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Rolling Stone is an American magazine that focuses on popular culture in regards to music, film, TV, and politics. And much of their content has been influential not to its viewers but to critics as well. Click [here](https://en.wikipedia.org/wiki/Rolling_Stone) to read more about _Rolling Stones Magazine_.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Specifically, our data is about an opinionated poll, by critical music figures, of the greatest 500 albums from 1955 to 2011, with information regarding an individual album. It's important to note that the data is constricted to just the years of **1955 to 2011**.
