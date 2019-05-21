@@ -1,7 +1,7 @@
 # Project Brainstorming - Music
 
 
-##Domain of Interest
+## Domain of Interest
 
 We are interested in the field of __music__ because:
 <ul>
