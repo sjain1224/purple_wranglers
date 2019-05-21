@@ -18,6 +18,7 @@ summary_table <- function(df) {
     filter(appearances == max(appearances, na.rm = T)) %>% 
     distinct(decade, total_albums, Artist, average_song_rank, appearances) %>% 
     mutate(most_popular = toString(Artist)) %>% 
+    arrange(decade) %>% 
     distinct(decade, total_albums, average_song_rank, most_popular) %>% 
     rename("Decade" = decade, "Total Albums" = total_albums,
            "Average Song Rank" = average_song_rank,
