@@ -10,6 +10,9 @@ knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
 source("scripts/summary_table.R")
 source("scripts/sum-info.R")
+source("scripts/chart1.R")
+source("scripts/chart2.R")
+source("scripts/chart3.R")
 kaggle <- read.csv("data/albumlist.csv")
 sum_information <- get_summary_info(kaggle)
 ```
@@ -28,5 +31,5 @@ According to Rolling Stone, the greatest album of all time was **`r sum_informat
 ## Music Through the Decades
 The following chart reveals popular music trends through the decades. Specifically, we wanted to see what decade had the highest average rank and who was the most popular artist from each decade. From this table, the biggest observation is that the average rank of albums in each decade gets higher as time goes on, meaning that older albums are considered more popular than recent music. However, more albums made the Top 500 in the 1970's (186 albums), even if they were not as highly ranked as some of the other decades.
 ```{r Summary Table, echo = FALSE}
-kable(summary_table(kaggle))
+kable(summary_table(kaggle), align = "c")
 ```
