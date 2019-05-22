@@ -8,7 +8,8 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
-read.csv("data/albumlist.csv")
+source("scripts/summary_table.R")
+kaggle <- read.csv("data/albumlist.csv")
 ```
 
 ## Introduction
@@ -17,3 +18,9 @@ How has Rolling Stones seen music change between 1955 and 2011 in the United Sta
 Rolling Stone is an American magazine that focuses on popular culture in regards to music, film, TV, and politics. And much of their content has been influential not to its viewers but to critics as well. Click [here](https://en.wikipedia.org/wiki/Rolling_Stone) to read more about _Rolling Stones Magazine_.
 
 Specifically, our data is about an opinionated poll, by critical music figures, of the greatest 500 albums from 1955 to 2011, with information regarding an individual album. It's important to note that the data is constricted to just the years of **1955 to 2011**.
+
+## Music Through the Decades
+The following chart reveals popular music trends through the decades. Specifically, we wanted to see what decade had the highest average rank and who was the most popular artist from each decade. From this table, the biggest observation is that the average rank of albums in each decade gets higher as time goes on, meaning that older albums are considered more popular than recent music. However, more albums made the Top 500 in the 1970's (186 albums), even if they were not as highly ranked as some of the other decades.
+```{r Summary Table, echo = FALSE}
+kable(summary_table(kaggle))
+```
