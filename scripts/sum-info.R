@@ -1,7 +1,6 @@
 # Summary Info
 library(dplyr)
 
-test_df <- read.csv("../data/albumlist.csv")
 get_summary_info <- function(data_set) {
   artist_1 <- data_set %>%
     filter(Number == 1) %>%
