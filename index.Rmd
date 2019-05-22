@@ -18,7 +18,7 @@ sum_information <- get_summary_info(kaggle)
 ```
 
 ## Introduction
-How has Rolling Stones seen music change between 1955 and 2011 in the United States? We will be looking at their list of the Top 500 greatest Albums from that time period, diving in and anazlyzing their rankings. Our data is driven by information found on Kaggle's _[Rolling Stone's 500 Greatest Albums of All Time](https://www.kaggle.com/notgibs/500-greatest-albums-of-all-time-rolling-stone)_. Through various charts and graphs, we will be looking at how album popularity has changed over time, how many albums a year on average make the Top 500, and which genres appeared most often in the Top 500.
+How has Rolling Stones seen music change between 1955 and 2011 in the United States? We will be looking at their list of the _Top 500 Greatest Albums_ from that time period, diving in and anazlyzing their rankings. Our data is driven by information found on Kaggle's _[Rolling Stone's 500 Greatest Albums of All Time](https://www.kaggle.com/notgibs/500-greatest-albums-of-all-time-rolling-stone)_. Through various charts and graphs, we will be looking at how album popularity has changed over time, how many albums a year on average make the Top 500, and which genres appeared most often in the Top 500.
 
 ### Our Data
 Rolling Stone is an American magazine that focuses on popular culture in regards to music, film, TV, and politics. And much of their content has been influential not to its viewers but to critics as well. Click [here](https://en.wikipedia.org/wiki/Rolling_Stone) to read more about _Rolling Stones Magazine_.
