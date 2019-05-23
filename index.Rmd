@@ -33,3 +33,25 @@ The following chart reveals popular music trends through the decades. Specifical
 ```{r Summary Table, echo = FALSE}
 kable(summary_table(kaggle), align = "c")
 ```
+
+## The Purple Wrangler's Top 3 Music Charts
+
+### Genres in the Top 500
+While looking at the data, we were interested in seeing if some genres are more popular with Rolling Stones' reviewers than others. And, we can say one genre was really... rocking it. Yep, the most common genre on the _Top 500 Greatest alubms_ was **Rock** by a large margin (almost half the albums were catergorized as Rock alone)! Funk/Soul and Hip Hop landed a distant second and 3rd, respectively, while the other 8 that round out our Top 10 have less than 50 albums on the list.
+```{r Music By Genre, echo = FALSE}
+plot1(kaggle)
+```
+
+### Number of Albums Per Year
+After seeing The number of years that have that number of albums making onto the list 
+```{r Music Avg by Year, echo = FALSE}
+plot2(kaggle)
+```
+
+### Number of Albums on Top 500 By Year
+In our final chart, we wanted to answer a question we had about how many albums made the Top 500, sorted by release year. Between the years 1955 and 2011, the entire range of this list, only _2009_ had no albums make the list. The year with the most albums was **1970**, with 26 albums! Overall, as a trend, we can see that older albums were more likely to make the list and that newer albums struggled to get on. _This shows that older albums tend to be regarded as the greatest._ As greatest is subjective, this could be due to a **variety of reasons**, whether it is because older albums are just better than the music being released more recently, a bias from the critics, who probably grew up listening the older albums, or the fact that newer albums have not had as much time to get established as a great. All we can say for certain is that the older albums were generally regarded as the **Greatest 500 Albums of All Time** as decided by _Rolling Stones_!
+
+Hover over each bar to see the year and number of albums that were in the Top 500!
+```{r Music By Year, echo = FALSE}
+plot3(kaggle)
+```
