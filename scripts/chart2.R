@@ -8,8 +8,7 @@ plot2 <- function(dataset) {
     group_by(Year) %>%
     summarise(count = n())
   ggplot(year_data, aes(x = year_data$Year, y = year_data$count)) + 
-    geom_violin(fill = "green") + geom_jitter(shape=16, 
-                                              position = position_jitter(0.2)) + 
+    geom_violin(fill = "green") + 
     labs(title = "Number of Albums Released per Year",
          x = "Year", y = "Number of Albums") 
 }

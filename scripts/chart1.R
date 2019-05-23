@@ -1,7 +1,5 @@
 # Bar chart - Genre count 
-library(R.utils)
 library(dplyr)
-library(data.table)
 library(ggplot2)
 
 plot1 <- function(dataset) {
