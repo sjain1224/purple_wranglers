@@ -11,6 +11,6 @@ plot2 <- function(dataset) {
     split = ~artist_data$decade, type = 'violin',
     box = list(visible = T), meanline = list(visible = T)) %>% 
     layout(title = "Album Ranks by Decade",
-      xaxis = list(title = "Rank"),
-      yaxis = list(title = "Decade", zeroline = F)) 
+      xaxis = list(title = "Decade"),
+      yaxis = list(title = "Rank", zeroline = F)) 
 }
