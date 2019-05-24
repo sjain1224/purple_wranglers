@@ -4,11 +4,13 @@ library(dplyr)
 library(ggplot2)
 
 plot2 <- function(dataset) {
-  year_data<- dataset %>%
-    group_by(Year) %>%
-    summarise(count = n())
-  ggplot(year_data, aes(x = year_data$Year, y = year_data$count)) + 
-    geom_violin(fill = "green") + 
-    labs(title = "Number of Albums Released per Year",
-         x = "Year", y = "Number of Albums") 
+  artist_data <- dataset %>%
+    mutate("decade" = floor(Year / 10) * 10) 
+  artist_data$decade <- as.factor(artist_data$decade)
+  plot_ly(x = ~artist_data$decade, y = ~artist_data$Number,
+    split = ~artist_data$decade, type = 'violin',
+    box = list(visible = T), meanline = list(visible = T)) %>% 
+    layout(title = "Album Ranks by Decade",
+      xaxis = list(title = "Rank"),
+      yaxis = list(title = "Decade", zeroline = F)) 
 }
