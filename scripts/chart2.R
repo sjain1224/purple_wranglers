@@ -1,4 +1,4 @@
-# Graph 2: Violin plot of # of Albums by year 
+# Graph 2: Violin plot of Album Ranks by Decade
 
 library(dplyr)
 library(ggplot2)
