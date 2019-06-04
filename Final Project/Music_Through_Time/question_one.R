@@ -3,9 +3,9 @@ library(ggvis)
 axis_vars <- list("Year" = "year", "Rank" = "rank", "Album Length (minutes)" = "track_min")
 
 
-fluidPage(
-  titlePanel("Do Track Number or Length Matter?"),
-  fluidRow(
+navbarPage(
+  title = ("Do Track Number or Length Matter?"),
+  sidebarPanel(
     column(3,
            wellPanel(
              h4("Filter Fields"),
