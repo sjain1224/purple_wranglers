@@ -18,7 +18,7 @@ sum_information <- get_summary_info(kaggle)
 ```
 
 ## Introduction
-How has Rolling Stones seen music change between 1955 and 2011 in the United States? We will be looking at their list of the Top 500 greatest Albums from that time period, diving in and anazlyzing their rankings. Our data is driven by information found on Kaggle's _[Rolling Stone's 500 Greatest Albums of All Time](https://www.kaggle.com/notgibs/500-greatest-albums-of-all-time-rolling-stone)_. Through various charts and graphs, we will be looking at how album popularity has changed over time, how many albums a year on average make the Top 500, and which genres appeared most often in the Top 500.
+How has Rolling Stones seen music change between 1955 and 2011 in the United States? We will be looking at their list of the _Top 500 Greatest Albums_ from that time period, diving in and anazlyzing their rankings. Our data is driven by information found on Kaggle's _[Rolling Stone's 500 Greatest Albums of All Time](https://www.kaggle.com/notgibs/500-greatest-albums-of-all-time-rolling-stone)_. Through various charts and graphs, we will be looking at how album popularity has changed over time, how many albums a year on average make the Top 500, and which genres appeared most often in the Top 500.
 
 ### Our Data
 Rolling Stone is an American magazine that focuses on popular culture in regards to music, film, TV, and politics. And much of their content has been influential not to its viewers but to critics as well. Click [here](https://en.wikipedia.org/wiki/Rolling_Stone) to read more about _Rolling Stones Magazine_.
@@ -26,10 +26,34 @@ Rolling Stone is an American magazine that focuses on popular culture in regards
 Specifically, our data is about an opinionated poll, by critical music figures, of the greatest 500 albums from 1955 to 2011, with information regarding an individual album. It's important to note that the data is constricted to just the years of **1955 to 2011**.
 
 ## Honorable Mentions
-According to Rolling Stone, the greatest album of all time was **`r sum_information$alb_1`** by _`r sum_information$art_1`_. The year with the most albums in the Top 500 was `r sum_information$most_year` while the most common artists were _`r sum_information$art_most_num`_. Recent albums have had a hard time making their way on this list. However, the most recent album to make it on to the Top 500 was **`r sum_information$most_recent`**.
+According to Rolling Stone, the greatest album of all time was **`r sum_information$alb_1`**, which was released in `r sum_information$year_1` by _`r sum_information$art_1`_. The year with the most albums in the Top 500 was `r sum_information$most_year` while the most common artists were _`r sum_information$art_most_num`_. Recent albums have had a hard time making their way on this list. However, the most recent album to make it on to the Top 500 was **`r sum_information$most_recent`**, which was released in `r sum_information$recent_year` by _`r sum_information$recent_art`_.
 
 ## Music Through the Decades
 The following chart reveals popular music trends through the decades. Specifically, we wanted to see what decade had the highest average rank and who was the most popular artist from each decade. From this table, the biggest observation is that the average rank of albums in each decade gets higher as time goes on, meaning that older albums are considered more popular than recent music. However, more albums made the Top 500 in the 1970's (186 albums), even if they were not as highly ranked as some of the other decades.
 ```{r Summary Table, echo = FALSE}
 kable(summary_table(kaggle), align = "c")
+```
+
+## The Purple Wrangler's Top 3 Music Charts
+
+### Genres in the Top 500
+While looking at the data, we were interested in seeing if some genres are more popular with Rolling Stones' reviewers than others. And, we can say one genre was really... rocking it. Yep, the most common genre on the _Top 500 Greatest alubms_ was **Rock** by a large margin (almost half the albums were catergorized as Rock alone)! Funk/Soul and Hip Hop landed a distant second and 3rd, respectively, while the other 8 that round out our Top 10 have less than 50 albums on the list.
+```{r Music By Genre, echo = FALSE}
+plot1(kaggle)
+```
+
+### Digging Deeper Into Each Decade
+After looking at the table, we wanted to dig deeper into each decade and looking at how the mean truly reflected the average rank of the decade. The box plot within that given decade shows that the median is greater than the mean in more recent years (meaning more albums are ranked closer to Rank 500 than the mean suggests) while the median is lower than the mean in earlier years, meaning that a few outliers are causing the mean to be higher than it should and that more albums rank closer to the top of the list. It also provides the 1st and 3rd quantiles. The violin plot reinforces all of the points we made. The widest width of the plots are on the same side of the mean as the median, meaning that there are more albums in that area of the rankings (for example, in 1950's,the widest area is around 100, meaning more 1950's albums are ranked around 75 than other ranks). 
+
+Hover over the plots to get more in-depth information!
+```{r Music Avg by Year, echo = FALSE}
+plot2(kaggle)
+```
+
+### Number of Albums on Top 500 By Year
+In our final chart, we wanted to answer a question we had about how many albums made the Top 500, sorted by release year. Between the years 1955 and 2011, the entire range of this list, only _2009_ had no albums make the list. The year with the most albums was **1970**, with 26 albums! Overall, as a trend, we can see that older albums were more likely to make the list and that newer albums struggled to get on. _This shows that older albums tend to be regarded as the greatest._ As greatest is subjective, this could be due to a **variety of reasons**, whether it is because older albums are just better than the music being released more recently, a bias from the critics, who probably grew up listening the older albums, or the fact that newer albums have not had as much time to get established as a great. All we can say for certain is that the older albums were generally regarded as the **Greatest 500 Albums of All Time** as decided by _Rolling Stones_!
+
+Hover over each dot to see the year and number of albums that were in the Top 500!
+```{r Music By Year, echo = FALSE}
+plot3(kaggle)
 ```
