@@ -1,6 +1,6 @@
 library(ggvis)
 library(dplyr)
-
+source("question_three.R")
 
 server <- function(input, output) {
   output$bar_graph <- renderPlot({
@@ -61,5 +61,13 @@ server <- function(input, output) {
            x = "Year",
            y = "Occurrences")
     my_point
+  })
+  
+  output$MakeRSPlot <- renderPlotly({
+    displayThreePlot1(input)
+  })
+  
+  output$MakeRSPie <- renderPlotly({
+    displayThreePlot2(input)
   })
 }
