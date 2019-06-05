@@ -5,11 +5,10 @@ library(dplyr)
 server <- function(input, output) {
   output$bar_graph <- renderPlot({
     graph_info <- one_data %>%
-      filter(track_length <= input$filter1, num_tracks <= filter2,
-             num_wks >= filter3, num_wks <= filter4)
+      filter(track_length <= input$filter1, num_tracks <= filter2)
     
     my_graph <- ggplot(graph_info) +
-      geom_count(mapping = aes_string(x = year, y = num_wks))+
+      geom_count(mapping = aes_string(x = year, y = input$y_var_1))+
       theme_classic()
     my_graph
   })

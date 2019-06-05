@@ -27,12 +27,12 @@ one_data <- one_data %>%
 var <- sliderInput("one_min_length", "Maximum length of album (in minutes)",
                     3, 800, 100, step = 5)
 var_1 <- sliderInput("one_track_num", "Minimum number of tracks on album",
-                      0, 700, 18, step = 1)
+                      0, 100, 18, step = 1)
 # var_2 <- sliderInput("one_year", "Year on Billboard Top 200", 1963, 2019,
 #                      value = c(1963, 2019),
 #                      sep = "")
-var_3 <- sliderInput("one_time_on", "Number of weeks on Billboard Top 200",
-                     0, 52, c(0, 52), step = 1)
+# var_3 <- sliderInput("one_time_on", "Number of weeks on Billboard Top 200",
+#                      0, 52, c(0, 52), step = 1)
 
 # Create tabPanel for the page
 response_one <- tabPanel(
@@ -43,8 +43,14 @@ response_one <- tabPanel(
       #Accepts user input
       filter1 <- var,
       filter2 <- var_1,
-      filter3 <- var_3[1],
-      filter4 <- var_3[2]
+      selectInput(
+        "y_var_1",
+        "By length in minutes or tracks",
+        choices = list("Minutes" = "track_length", "Number of Tracks" = "num_tracks"),
+        selected = "track_length"
+      )
+      # filter3 <- var_3[1],
+      # filter4 <- var_3[2]
     ),
     mainPanel(
       plotOutput(outputId = "bar_graph")
