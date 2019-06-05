@@ -2,9 +2,9 @@
 library(plotly)
 library(readr)
 
-three_data <- read.csv("data/albumlist.csv", encoding = "latin1")
+three_data <- read.csv("data/albumlist.csv", stringsAsFactors = F,
+                               fileEncoding = "latin1")
 
-                       
 # Breaking down Genres into 10 core genres (Tedious, Extensive)
 
 # Blues
@@ -62,7 +62,7 @@ three_data$Genre[three_data$Genre == "Jazz, Rock, Pop"] <- "Jazz"
 three_data$Genre[three_data$Genre == "Pop, Folk, World, & Country"] <- "Pop"
 
 # Reggae 
-three_data$Genre[three_data$Genre == "Reggae,ÊPop,ÊFolk,World, & Country,ÊStage & Screen"] <- "Reggae"
+three_data$Genre[three_data$Genre == "Reggae,ÊPop,ÊFolk, World, & Country,ÊStage & Screen"] <- "Reggae"
 
 # Rock
 three_data$Genre[three_data$Genre == "Rock, Blues, Folk, World, & Country"] <- "Rock"
@@ -70,7 +70,7 @@ three_data$Genre[three_data$Genre == "Rock, Blues, Pop"] <- "Rock"
 three_data$Genre[three_data$Genre == "Rock, Folk, World, & Country"] <- "Rock"
 three_data$Genre[three_data$Genre == "Rock, Funk / Soul"] <- "Rock"
 three_data$Genre[three_data$Genre == "Rock, Funk / Soul, Blues"] <- "Rock"
-three_data$Genre[three_data$Genre == "Rock, Funk / Soul, Blues,  Pop, Folk, World, & Country"] <- "Rock"
+three_data$Genre[three_data$Genre == "Rock, Funk / Soul, Blues, Pop, Folk, World, & Country"] <- "Rock"
 three_data$Genre[three_data$Genre == "Rock, Funk / Soul, Folk, World, & Country"] <- "Rock"
 three_data$Genre[three_data$Genre == "Rock, Funk / Soul, Pop"] <- "Rock"
 three_data$Genre[three_data$Genre == "Rock, Latin"] <- "Rock"
@@ -85,10 +85,8 @@ three_data$Genre[three_data$Genre == "Rock,ÊBlues"] <- "Rock"
 three_data$Genre[three_data$Genre == "Rock,ÊPop"] <- "Rock"
 
 # Fixing other characters
-three_data$Artist[three_data$Artist == "Stan GetzÊ/ÊJoaoGilbertoÊfeaturingÊAntonioCarlos Jobim"] <- "Stan Getz and Joao Gilberto featuring Antonio Carlos Jobim"
-
+three_data$Artist[three_data$Artist == "Stan GetzÊ/ÊJoao GilbertoÊfeaturingÊAntonio Carlos Jobim"] <- "Stan Getz and Joao Gilberto featuring Antonio Carlos Jobim"
 three_data$Album[three_data$Album == "Honky Chteau"] <- "Honky Chateau"
-
 three_data <- three_data %>%
   mutate("Decade" = floor(Year / 10) * 10)
 
@@ -204,7 +202,7 @@ displayThreePlot2 <- function(input) {
                         zeroline = FALSE, showticklabels = FALSE))
 }
 
-response_three <- tabPanel("Genre Popularity Over the Years",
+response_three <- tabPanel("Genre Popularity",
                            sidebarLayout(
                              sidebarPanel(
                                selectInput("genre", "Genre:",
