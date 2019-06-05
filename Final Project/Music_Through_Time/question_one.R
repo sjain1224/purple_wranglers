@@ -42,9 +42,9 @@ response_one <- tabPanel(
     sidebarPanel(
       #Accepts user input
       filter1 <- var,
-      filter2 <- var1,
-      filter3 <- var3[1],
-      filter4 <- var3[2]
+      filter2 <- var_1,
+      filter3 <- var_3[1],
+      filter4 <- var_3[2]
     ),
     mainPanel(
       plotOutput(outputId = "bar_graph")
