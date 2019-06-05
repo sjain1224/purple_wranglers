@@ -80,12 +80,15 @@ three_data$Genre[three_data$Genre == "Rock, Blues"] <- "Rock"
 three_data$Genre[three_data$Genre == "Rock,ÊBlues"] <- "Rock"
 three_data$Genre[three_data$Genre == "Rock,ÊPop"] <- "Rock"
 
-# Fixing other issues
+# Fixing other characters
 three_data$Artist[three_data$Artist == "Stan GetzÊ/ÊJoao GilbertoÊfeaturingÊAntonio Carlos Jobim"] <- "Stan Getz and Joao Gilberto featuring Antonio Carlos Jobim"  
 three_data$Album[three_data$Album == "Honky Chteau"] <- "Honky Chateau"
 
+three_data <- three_data %>% 
+  mutate("Decade" = floor(Year / 10) * 10) 
+
 # Function for Server to filter Genre and generate plot
-displayThreePlot <- function(input) {
+displayThreePlot1 <- function(input) {
   
   # Filter to the selected Genre; all of the albums are condensed to 
   # these 10 core genres
@@ -116,15 +119,17 @@ displayThreePlot <- function(input) {
   } else if (input$genre == "Reggae") {
     three_data_plot <- three_data %>%
       filter(Genre == "Reggae")
-  } else {
+  } else if (input$genre == "Rock") {
     three_data_plot <- three_data %>%
       filter(Genre == "Rock")
+  } else {
+    three_data_plot <- three_data
   }
   
   # Creates a Scatterplot based on a Genre and its albums from
   # 1955 - 2011
-  make_three_plot <- plot_ly(three_data_plot, x = ~Year, y = ~Number, color = ~Number,
-                     type = 'scatter', mode = 'markers',  
+  make_rs_plot1 <- plot_ly(three_data_plot, x = ~Year, y = ~Number, color = ~Genre,
+                     type = 'scatter', mode = 'markers', size = ~Number, 
                      marker = list(size=10 , opacity=0.5), 
                      text = ~paste('Rank:', Number,
                                    '<br>Album:', Album,
@@ -136,4 +141,51 @@ displayThreePlot <- function(input) {
            xaxis = list(title = 'Year', showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
            yaxis = list(title = 'Rank', showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 }
+
+displayThreePlot2 <- function(input) {
+  if (input$decade == "1950") {
+    three_data_plot <- three_data %>% 
+      group_by(Genre) %>%
+      filter(Decade == "1950") %>%
+      summarise(count = n())
+  } else if (input$decade == "1960") {
+    three_data_plot <- three_data %>%
+      group_by(Genre) %>%
+      filter(Decade == "1960") %>%
+      summarise(count = n())
+  } else if (input$decade == "1970") {
+    three_data_plot <- three_data %>%
+      group_by(Genre) %>%
+      filter(Decade == "1970") %>%
+      summarise(count = n())
+  } else if (input$decade == "1980") {
+    three_data_plot <- three_data %>%
+      group_by(Genre) %>%
+      filter(Decade == "1980") %>%
+      summarise(count = n())
+  } else if (input$decade == "1990") {
+    three_data_plot <- three_data %>%
+      group_by(Genre) %>%
+      filter(Decade == "1990") %>%
+      summarise(count = n())
+  } else if (input$decade == "2000") {
+    three_data_plot <- three_data %>%
+      group_by(Genre) %>%
+      filter(Decade == "2000") %>%
+      summarise(count = n())
+  } else if (input$decade == "2010") {
+    three_data_plot <- three_data %>%
+      group_by(Genre) %>%
+      filter(Decade == "2010") %>%
+      summarise(count = n())
+  } else {
+    three_data_plot <- three_data %>%
+      group_by(Genre) %>%
+      summarise(count = n())
+  }
   
+  make_rs_plot2 <- plot_ly(three_data_plot, labels = ~Genre, values = ~count, type = 'pie') %>%
+    layout(title = 'Rolling Stones Genre Breakdown',
+           xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+           yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
+}
