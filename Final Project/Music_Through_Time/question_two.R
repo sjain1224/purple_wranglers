@@ -30,10 +30,10 @@ useful <- two_data %>%
   filter(nchar(Lyrics) > 5) # Drop rows where lyrics are less than 5 chars
 
 # Create a data frame of unimportant words
-words <- c("dont", "yeah", "im", "wanna", "ya", "youre", "hey", "ill", "ooh",
-           "aint", "gonna", "la", "ive", "uh", "na", "wont", "gotta", "da",
-           "call", "em", "youve", "id")
-unimportant <- data.frame(words, stringsAsFactors = FALSE)
+bad_words <- c("dont", "yeah", "im", "wanna", "ya", "youre", "hey", "ill", 
+               "ooh", "aint", "gonna", "la", "ive", "uh", "na", "wont",
+               "gotta", "da", "call", "em", "youve", "id")
+unimportant <- data.frame(bad_words, stringsAsFactors = FALSE)
 
 
 # Rename column name to "word"
@@ -42,7 +42,7 @@ colnames(unimportant) <- "word"
 # Get a full list of words used, removing stop and other unimportant words
 non_stop_words <- useful %>% 
   unnest_tokens(word, Lyrics) %>% 
-  anti_join (stop_words, by = "word") %>%
+  anti_join (stop_words, by = "word") %>% 
   anti_join(unimportant, by = "word")
 
 # Get top ten words, with no stop words, used each year
@@ -51,7 +51,7 @@ top_ten_words <- non_stop_words %>%
   group_by(decade) %>% 
   add_count(word, sort = TRUE) %>% 
   distinct(decade, word, n) %>% 
-  top_n(10) %>%
+  top_n(10, n) %>%
   arrange(-n) %>% 
   mutate(words = toString(word)) %>% 
   distinct(decade, words) %>% 
@@ -72,16 +72,20 @@ cloud <- cloud_list %>%
 
 # Create line chart for each decade's top ten words ---------------------------
 
-# Create a list containing top ten words for each decade
+# Create a table containing top ten words for each decade
 top_tens = non_stop_words %>%
   mutate(decade = floor(Year/10) * 10) %>% 
   group_by(decade) %>% 
   add_count(word, sort = TRUE) %>% 
-  distinct(decade, word, n) %>% 
-  top_n(10) %>%
-  ungroup() %>%
-  distinct(word) %>% 
-  pull(word)
+  distinct(decade, word, n) %>%
+  rename(term = word) %>% 
+  top_n(10, n) %>%
+  ungroup()
+
+# Create a list of the top ten words from each decade
+words <- top_tens %>% 
+  distinct(term) %>% 
+  pull(term)
 
 # Create a list of each decade
 decades <- seq(1960, 2015, 10)
@@ -89,8 +93,8 @@ decades <- seq(1960, 2015, 10)
 # Store a selectInput() for the variable to appear on the y-axis of my chart
 y_axis_var <- selectInput(inputId = "y_bar",
                           label = "Select Word",
-                          choices = top_tens,
-                          selected = top_tens[1])
+                          choices = words,
+                          selected = words[1])
 
 
 
@@ -98,12 +102,11 @@ y_axis_var <- selectInput(inputId = "y_bar",
 # Create tabPanel for page ----------------------------------------------------
 response_two <- tabPanel(
   "Page 2",
-  titlePanel("Create A Bar Chart"),
+  titlePanel("Lyrics Through the Decades"),
   sidebarLayout(
     sidebarPanel(
-      # Accept y-axis and x-axis inputs
-      y_bar <- y_axis_var,
-      x_bar <- decades
+      # Accept y-axis input
+      y_line <- y_axis_var
     ),
     mainPanel(
       # Plot the output with the name "line"
