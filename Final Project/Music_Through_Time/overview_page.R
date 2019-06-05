@@ -59,5 +59,5 @@ overview <- tabPanel(
   h4("Data Source 3 - *Billboard 1963-2019 Top 200 Albums Per Week*"),
   set_three_info_one,
   set_three_info_two,
-  tags$img(src="record.jpg", width = "100px", height = "100px")
+  tags$img(src="rock.gif", width = "100px", height = "100px")
 )
