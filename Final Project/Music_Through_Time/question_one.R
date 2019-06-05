@@ -34,7 +34,7 @@ var <- sliderInput("filter1",
                    value = 100,
                    step = 5)
 var_1 <- sliderInput("filter2", "Maximum number of tracks on album",
-                      0, 100, 18, step = 1)
+                      0, 666, 18, step = 1)
 var_3 <- sliderInput("filter3", "Number of weeks on Billboard Top 200",
                     0, 52, c(0, 52), step = 1)
 
@@ -56,7 +56,11 @@ response_one <- tabPanel(
       y_var_1 <- display
     ),
     mainPanel(
-      plotOutput(outputId = "bar_graph")
+      plotOutput(outputId = "bar_graph"), br(), h4("What Does This Mean?"),
+      br(), p("Explore the graph above by seeing which album falls within",
+              "all of those categories. Once you have selected what you want",
+              "to see, you may notice a few things... follow to our",
+              "Summary page to see if you saw what we saw.")
     )
   )
 )
