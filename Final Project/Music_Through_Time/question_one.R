@@ -53,14 +53,15 @@ response_one <- tabPanel(
       filter1 <- var,
       filter2 <- var_1,
       filter3 <- var_3,
-      y_var_1 <- display
-    ),
-    mainPanel(
-      plotOutput(outputId = "bar_graph"), br(), h4("What Does This Mean?"),
+      y_var_1 <- display,
+      br(), hr(), h4("What Does This Mean?"),
       br(), p("Explore the graph above by seeing which album falls within",
               "all of those categories. Once you have selected what you want",
               "to see, you may notice a few things... follow to our",
               "Summary page to see if you saw what we saw.")
+    ),
+    mainPanel(
+      plotOutput(outputId = "bar_graph")
     )
   )
 )
