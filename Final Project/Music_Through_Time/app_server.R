@@ -4,10 +4,9 @@ source("question_three.R")
 
 server <- function(input, output) {
   output$bar_graph <- renderPlot({
-    graph_info <- one_data %>% 
-      filter((track_length <= input$filter1) & (num_tracks <= input$filter2) &
+    graph_info <- one_data %>%
+      filter( (track_length <= input$filter1) & (num_tracks <= input$filter2) &
              (num_wks >= input$filter3[1]) & (num_wks <= input$filter3[2]))
-    
     my_graph <- ggplot(graph_info) +
       geom_count(mapping = aes_string(x = "year", y = input$y_var_1)) +
       labs(title = paste0("Year By ", input$y_var_1),
@@ -24,7 +23,7 @@ server <- function(input, output) {
     # Filter to the specified word
     line_info <- word_table %>%
       filter(term == input$y_var)
-    
+
     # Plot the line chart
     my_line <- ggplot(data = line_info) +
       geom_line(mapping = aes(x = decade, y = decade_occurrences),
@@ -33,30 +32,29 @@ server <- function(input, output) {
       labs(title = paste0("Occurrences of \"", input$y_var, "\" over Decades"),
            x = "Decade",
            y = "Occurrences") +
-      theme(panel.border = element_rect(color = "black", fill = NA, 
+      theme(panel.border = element_rect(color = "black", fill = NA,
                                         size = 3),
             plot.title = element_text(hjust = 0.5))
     my_line
   })
-  
+
   output$summ_top_ten <- renderTable({
     top_ten_words
   })
-  
+
   # Create the bubble chart for question two
   output$point_two <- renderPlot({
     # Filter to the specified word
-    line_info <- word_table %>% 
+    line_info <- word_table %>%
       filter(term == input$y_var)
-    
-    
+
     # Plot the scatterplot
     my_point <- ggplot(data = line_info) +
       geom_point(mapping = aes(x = Year, y = year_occurrences, alpha = 0.2,
                                size = year_occurrences), color = input$color) +
       scale_size_continuous(range = c(0.5, 16)) +
       theme_classic() +
-      theme(panel.border = element_rect(color = "black", fill = NA, 
+      theme(panel.border = element_rect(color = "black", fill = NA,
                                         size = 3),
             plot.title = element_text(hjust = 0.5)) +
       labs(title = paste0("Occurrences of \"", input$y_var, "\" over Years"),
@@ -64,11 +62,11 @@ server <- function(input, output) {
            y = "Occurrences")
     my_point
   })
-  
+
   output$MakeRSPlot <- renderPlotly({
     displayThreePlot1(input)
   })
-  
+
   output$MakeRSPie <- renderPlotly({
     displayThreePlot2(input)
   })
