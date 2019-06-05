@@ -1,20 +1,18 @@
 library(ggvis)
 library(dplyr)
 
-# Set up handles to database tables on app start
-one_data <- read.csv("../../data/billboardalbum200.csv", stringsAsFactors = F)
-one_data <- one_data %>%
-  mutate(track_min = round(track_length / 100 / 60, digits = 1)) %>%
-  mutate(year = substr(date, 1, 4)) %>%
-  mutate(month = substr(date, 6, 7)) %>%
-  group_by(album) %>%
-  select(album, rank, artist, year, month, track_min, length) %>%
-  mutate(mean_rank = round(mean(rank, na.rm = T), 0),
-         track_length = round(mean(track_min, na.rm = T), 1),
-         num_tracks = round(mean(length, na.rm = T), 0), num_wks = n())
 
-
-server <- function(input, output, session) {
+server <- function(input, output) {
+  output$bar_graph <- renderPlot({
+    graph_info <- one_data %>%
+      filter(track_length <= input$filter1, num_tracks <= filter2,
+             num_wks >= filter3, num_wks <= filter4)
+    
+    my_graph <- ggplot(graph_info) +
+      geom_count(mapping = aes_string(x = year, y = num_wks))+
+      theme_classic()
+    my_graph
+  })
   # 
   # # Filter the movies, returning a data frame
   # one <- reactive({
