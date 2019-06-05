@@ -63,3 +63,8 @@ The data is about the performance of U.S. albums (unlike just singles in Dataset
 
 # Midterm Project
 Our midterm project is looking at how Rolling Stone's has seen music change in the United States over time using the dataset _Rolling Stone's 500 Greatest Albums_. To view our project, visit https://sjain1224.github.io/purple_wranglers/ !
+
+# Final Project
+After all the knowledge we gained this quarter and our passion for music, we are now ready to take you on a Journey through the History of American Music with information and visualizations to truly show how (or if) music has changed in the United States!
+
+View our project at https://sjain1224.shinyapps.io/Music_Through_Time/
