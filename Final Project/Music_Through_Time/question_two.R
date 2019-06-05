@@ -112,7 +112,12 @@ response_two <- tabPanel(
     sidebarPanel(
       # Accept y-axis input
       y_var <- y_axis_var,
-      color <- color_input
+      color <- color_input,
+      br(), hr(), h4("What Does This Show?"),
+      br(), p("These charts show the popularity of the top 20 words used in",
+              "songs each decade, from the 1960s through the 2010s. The top",
+              "chart shows the number of occurrences of the word each decade;",
+              "the bottom one shows the distribution of its usage each year.")
     ),
     mainPanel(
       # Plot the output with the name "line"
