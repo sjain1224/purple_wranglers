@@ -12,8 +12,9 @@ server <- function(input, output) {
       geom_count(mapping = aes_string(x = "year", y = input$y_var_1)) +
       labs(title = paste0("Year By ", input$y_var_1))
       theme_classic() +
-      theme(plot.title = element_text(face = "bold.italic", 12, hjust = 0.5))
-      theme(axis.text.x = element_text(angle = 90, hjust = 0, vjust = 0.5))
+      theme(plot.title = element_text(face = "bold.italic", 12, hjust = 0.5)) +
+      theme(axis.text.x = element_text(angle = 90, hjust = 0, vjust = 0.5), 
+            legend.title = "Number of Albums")
     my_graph
   })
 
