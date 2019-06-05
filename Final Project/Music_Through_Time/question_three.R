@@ -1,7 +1,7 @@
 # Data Question Three
 library(dplyr)
 library(shiny)
-three_data <- read.csv("../../data/albumlist.csv", stringsAsFactors = F)
+three_data <- read.csv("../../data/albumlist.csv", stringsAsFactors = F, fileEncoding="latin1")
 
 # Breaking down Genres into 10 core genres (Tedious, Extensive)
 
@@ -25,8 +25,8 @@ three_data$Genre[three_data$Genre == "Electronic, Rock, Funk / Soul, Blues, Pop"
 three_data$Genre[three_data$Genre == "Electronic, Rock, Funk / Soul, Pop" ] <- "Electronic"
 three_data$Genre[three_data$Genre == "Electronic, Rock, Funk / Soul, Stage & Screen"] <- "Electronic"
 three_data$Genre[three_data$Genre == "Electronic, Rock, Pop"] <- "Electronic"
-three_data$Genre[three_data$Genre == "Electronic,<ca>Stage & Screen"] <- "Electronic"
-three_data$Genre[three_data$Genre == "Funk / Soul,<ca>Folk, World, & Country"] <- "Electronic"
+three_data$Genre[three_data$Genre == "Electronic,ÊStage & Screen"] <- "Electronic"
+three_data$Genre[three_data$Genre == "Funk / Soul,ÊFolk, World, & Country"] <- "Electronic"
 
 # Folk 
 three_data$Genre[three_data$Genre == "Folk, World, & Country"] <- "Folk"
@@ -36,7 +36,7 @@ three_data$Genre[three_data$Genre == "Funk / Soul, Blues"] <- "Funk / Soul"
 three_data$Genre[three_data$Genre == "Funk / Soul, Folk, World, & Country"] <- "Funk / Soul"
 three_data$Genre[three_data$Genre == "Funk / Soul, Pop"] <- "Funk / Soul"
 three_data$Genre[three_data$Genre == "Funk / Soul, Stage & Screen"] <- "Funk / Soul"
-three_data$Genre[three_data$Genre == "Funk / Soul,<ca>Folk, World, & Country"] <- "Funk / Soul"
+three_data$Genre[three_data$Genre == "Funk / Soul,ÊFolk, World, & Country"] <- "Funk / Soul"
 three_data$Genre[three_data$Genre == "Latin, Funk / Soul"] <- "Funk / Soul"
 
 
@@ -60,7 +60,7 @@ three_data$Genre[three_data$Genre == "Jazz, Rock, Pop"] <- "Jazz"
 three_data$Genre[three_data$Genre == "Pop, Folk, World, & Country"] <- "Pop"
 
 # Reggae 
-three_data$Genre[three_data$Genre == "Reggae,<ca>Pop,<ca>Folk, World, & Country,<ca>Stage & Screen"] <- "Reggae"
+three_data$Genre[three_data$Genre == "Reggae,ÊPop,ÊFolk, World, & Country,ÊStage & Screen"] <- "Reggae"
 
 # Rock
 three_data$Genre[three_data$Genre == "Rock, Blues, Folk, World, & Country"] <- "Rock"
@@ -79,8 +79,12 @@ three_data$Genre[three_data$Genre == "Rock, Reggae"] <- "Rock"
 three_data$Genre[three_data$Genre == "Rock, Reggae, Latin"] <- "Rock"
 three_data$Genre[three_data$Genre == "Rock, Stage & Screen"] <- "Rock"
 three_data$Genre[three_data$Genre == "Rock, Blues"] <- "Rock"
-three_data$Genre[three_data$Genre == "Rock,<ca>Blues"] <- "Rock"
-three_data$Genre[three_data$Genre == "Rock,<ca>Pop"] <- "Rock"
+three_data$Genre[three_data$Genre == "Rock,ÊBlues"] <- "Rock"
+three_data$Genre[three_data$Genre == "Rock,ÊPop"] <- "Rock"
+
+# Fixing other characters
+three_data$Artist[three_data$Artist == "Stan GetzÊ/ÊJoao GilbertoÊfeaturingÊAntonio Carlos Jobim"] <- "Stan Getz and Joao Gilberto featuring Antonio Carlos Jobim"  
+
 
 # Function for Server to filter Genre and generate plot
 displayThreePlot <- function(input) {
@@ -123,9 +127,13 @@ displayThreePlot <- function(input) {
   
   # Creates a Scatterplot based on a Genre and its albums from
   # 1955 - 2011
-  rs_plot <- plot_ly(three_data_plot, x = ~Year, y = ~Number, 
+  rs_plot <- plot_ly(three_data_plot, x = ~Year, y = ~Number, color = ~Genre,
                      type = 'scatter', mode = 'markers',  
-                     marker = list(size=10 , opacity=0.5)) %>%
+                     marker = list(size=10 , opacity=0.5), 
+                     text = ~paste('Rank:', Number,
+                                   '<br>Album:', Album,
+                                   '<br>Year Released:', Year), 
+                     hoverinfo = "text") %>%
     hide_colorbar() %>%
     layout(title = 'Rolling Stones Top 500 Albums', margin = list(t = "110"), 
            xaxis = list(title = 'Year', showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
