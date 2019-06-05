@@ -35,10 +35,15 @@ server <- function(input, output) {
     my_line
   })
   
+  output$summ_top_ten <- renderDataTable({
+    top_ten_words
+  })
+  
   output$point_two <- renderPlot({
     # Filter to the specified word
     line_info <- word_table %>% 
       filter(term == input$y_var)
+    
     
     # Plot the scatterplot
     my_point <- ggplot(data = line_info) +

@@ -1,6 +1,9 @@
 
+link_one <- tags$a(href = "www.smithsonianmag.com/smart-news/science-proves-pop-music-has-actually-gotten-worse-8173368/",
+                   "Or at least, that is what people say.")
+
 intro <- paste("Ever since Rock and Roll, American Music has been in a constant 
-     decline. Or at least, that is what people say. We are going to rock
+     decline.", link_one, "We are going to rock
      and roll through the history of American Music, from 1950's to
      now to exactly see how music has changed. Specifically, we will
      be looking at how the length of albums have changed, how the Top
@@ -43,8 +46,6 @@ set_three_info_two <- p("The data is about the performance of U.S. albums
     the popularity of an album can be affected by single 
     songs so it would also be interesting to see how the top
     albums match up with the top songs using dataset 1.")
-
-image_one <- div(img(src = "imgs/record.jpg"))
 
 overview <- tabPanel(
   "Overview",
