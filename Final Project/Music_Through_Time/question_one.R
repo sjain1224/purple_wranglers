@@ -19,10 +19,10 @@ one_data <- one_data %>%
   select(album, rank, artist, year, month, track_min, length) %>%
   mutate(mean_rank = round(mean(rank, na.rm = T), 0),
          track_length = round(mean(track_min, na.rm = T), 1),
-         num_tracks = round(mean(length, na.rm = T), 0), num_wks = n()) 
+         num_tracks = round(mean(length, na.rm = T), 0), num_wks = n())
 
 # Drop the first row
-one_data <- one_data[-1,]
+one_data <- one_data[-1, ]
 
 # Create graph of specified variables ----------------------------------------
 
