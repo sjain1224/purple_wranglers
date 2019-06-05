@@ -45,7 +45,7 @@ set_three_info_two <- p("The data is about the performance of U.S. albums
     songs so it would also be interesting to see how the top
     albums match up with the top songs using dataset 1.")
 
-image_one <- img(src = "imgs/record.jpg")
+image_one <- div(img(src = "imgs/record.jpg"))
 
 overview <- tabPanel(
   "Overview",
@@ -59,5 +59,5 @@ overview <- tabPanel(
   h4("Data Source 3 - *Billboard 1963-2019 Top 200 Albums Per Week*"),
   set_three_info_one,
   set_three_info_two,
-  image_one
+  tags$img(src="record.jpg", width = "100px", height = "100px")
 )
