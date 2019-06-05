@@ -11,7 +11,7 @@ server <- function(input, output) {
     my_graph <- ggplot(graph_info) +
       geom_count(mapping = aes_string(x = "year", y = input$y_var_1)) +
       theme_classic() +
-      theme(axis.text.x = element_text(angle = 90, hjust = 1))
+      theme(axis.text.x = element_text(angle = 90, hjust = 0, vjust = 0.5))
     my_graph
   })
 
