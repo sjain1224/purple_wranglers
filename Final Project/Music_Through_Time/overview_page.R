@@ -50,6 +50,7 @@ overview <- tabPanel(
   "Overview",
   titlePanel("Overview of American Music"),
   intro,
+  br(),
   tags$img(src = "rock.gif", width = "100px", height = "100px"),
   h3("Our Data Sets"),
   h4("Data Source 1 - Billboard 1964-2015 Songs + Lyrics"),
