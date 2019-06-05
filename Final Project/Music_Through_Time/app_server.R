@@ -43,6 +43,7 @@ server <- function(input, output) {
     top_ten_words
   })
   
+  # Create the bubble chart for question two
   output$point_two <- renderPlot({
     # Filter to the specified word
     line_info <- word_table %>% 
