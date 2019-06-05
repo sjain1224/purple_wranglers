@@ -208,7 +208,7 @@ response_three <- tabPanel("Genre Popularity Over the Years",
                              ),
                              mainPanel(
                                plotlyOutput("MakeRSPlot"), 
-                               '<br>',
+                               br(),
                                plotlyOutput("MakeRSPie")
                              )
                            ),
@@ -223,7 +223,7 @@ response_three <- tabPanel("Genre Popularity Over the Years",
            appearances on the list with 318 albums alone; which makes up roughly 64% of the entire list."),  
                                         p("As greatest is subjective, this could be due to a variety of reasons, whether it is because older albums are just better 
              than the music being released more recently, a bias from the critics, who probably grew up listening the older albums and 
-             those albums’ genre being Rock. Or could be fact that newer albums and other genres have not had as much time to get established 
+             those album's genre being Rock. Or could be fact that newer albums and other genres have not had as much time to get established 
             as a great. All we can say for certain is that the older albums and rock albums were generally regarded as the Greatest 500 Albums 
              of All Time as decided by Rolling Stones!"),
                              column(width = 1))))
