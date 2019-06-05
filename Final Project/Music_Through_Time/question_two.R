@@ -17,6 +17,9 @@ library("tidytext")
 # Load in the "wordcloud" package
 library("wordcloud")
 
+# Load in the "ggplot" package
+library("ggplot")
+
 # Read in my csv file
 two_data <- read.csv(
   "../../data/billboard_lyrics_1964-2015.csv", stringsAsFactors = F)
@@ -101,9 +104,6 @@ y_axis_var <- selectInput(inputId = "y_line",
                           label = "Select Word",
                           choices = top_20,
                           selected = top_20[1])
-
-
-
 
 # Create tabPanel for page ----------------------------------------------------
 response_two <- tabPanel(
