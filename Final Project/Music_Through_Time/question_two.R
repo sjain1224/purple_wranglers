@@ -11,8 +11,9 @@ library("wordcloud")
 library("ggplot2")
 
 # Read in my csv file
-two_data <- read.csv("data/billboard_lyrics_1964-2015.csv", 
-  stringsAsFactors = F, encoding = "latin1")
+two_data <- read.csv(
+  "../../data/billboard_lyrics_1964-2015.csv", stringsAsFactors = F)
+
 
 # Create Table of Top Common Words by Decade ----------------------------------
 
