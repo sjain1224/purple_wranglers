@@ -72,29 +72,35 @@ cloud <- cloud_list %>%
 
 # Create line chart for each decade's top ten words ---------------------------
 
-# Create a table containing top ten words for each decade
-top_tens = non_stop_words %>%
-  mutate(decade = floor(Year/10) * 10) %>% 
-  group_by(decade) %>% 
-  add_count(word, sort = TRUE) %>% 
-  distinct(decade, word, n) %>%
-  rename(term = word) %>% 
-  top_n(10, n) %>%
-  ungroup()
+# Create a vector containing top twenty words over time
+top_20 <- non_stop_words %>%
+  group_by(word) %>% 
+  add_count(word, name = "occurrences") %>% 
+  distinct(word, occurrences) %>%
+  ungroup() %>% 
+  top_n(20, occurrences) %>% 
+  arrange(-occurrences) %>% 
+  pull(word)
 
-# Create a list of the top ten words from each decade
-words <- top_tens %>% 
-  distinct(term) %>% 
-  pull(term)
+# Create a table showing top twenty word popularity over time
+word_table <- non_stop_words %>% 
+  mutate(decade = floor(Year/10) * 10) %>% 
+  filter(word %in% top_20) %>% 
+  select(word, decade) %>% 
+  group_by(word, decade) %>% 
+  add_count(word, name = "occurrences") %>% 
+  distinct(word, decade, occurrences) %>%
+  rename(term = word) %>% 
+  arrange(decade)
 
 # Create a list of each decade
 decades <- seq(1960, 2015, 10)
 
 # Store a selectInput() for the variable to appear on the y-axis of my chart
-y_axis_var <- selectInput(inputId = "y_bar",
+y_axis_var <- selectInput(inputId = "y_line",
                           label = "Select Word",
-                          choices = words,
-                          selected = words[1])
+                          choices = top_20,
+                          selected = top_20[1])
 
 
 

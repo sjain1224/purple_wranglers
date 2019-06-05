@@ -91,10 +91,13 @@ server <- function(input, output) {
   # 
   # Create the line chart for question two
   output$line_two <- renderPlot({
-    # Plot the Scatterplot
-    my_line <- ggplot(data = top_tens) +
-      geom_point(mapping = aes_string(x = input$decades, y = input$y_line),
-                 color = input$color)
+    # Filter to the specified word
+    line_info <- word_table %>% 
+      filter(term == input$y_line) 
+    
+    # Plot the line chart
+    my_line <- ggplot(data = line_info) +
+      geom_line(mapping = aes(x = decade, y = occurrences))
     my_line
   })
 }
