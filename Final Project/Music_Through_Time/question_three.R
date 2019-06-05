@@ -186,7 +186,7 @@ displayThreePlot1 <- function(input) {
            margin = list(t = "110"),
            xaxis = list(title = "Year", showgrid = FALSE,
                         zeroline = FALSE, showticklabels = FALSE),
-           yaxis = list(title = "Year", showgrid = FALSE,
+           yaxis = list(title = "Rank", showgrid = FALSE,
                         zeroline = FALSE, showticklabels = FALSE))
 }
 
@@ -235,7 +235,7 @@ displayThreePlot2 <- function(input) {
   MakeRSPie <- plot_ly(three_data_plot,
                        labels = ~Genre,
                        values = ~count,
-                       type = "Pie") %>%
+                       type = "pie") %>%
     layout(title = "Rolling Stones Genre Breakdown",
            xaxis = list(showgrid = FALSE,
                         zeroline = FALSE, showticklabels = FALSE),
