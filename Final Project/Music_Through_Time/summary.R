@@ -12,7 +12,7 @@ take_two <- p("While many people claim that music has lost its meaning and
               per decade, and the overall trend of lyric use from the 1960's to
               now, not a lot has changed.")
 
-ten_table <- tableOutput(
+ten_table <-dataTableOutput(
   outputId = "summ_top_ten"
 )
 
@@ -23,5 +23,5 @@ summ_resp <- tabPanel(
   h3("Takeaway #1: "),
   h3("Takeaway #2: Music Is Not Completely Different"),
   take_two,
-  kable(top_ten_words)
+  ten_table
 )
