@@ -49,8 +49,8 @@ response_one <- tabPanel(
         choices = list("Minutes" = "track_length", "Number of Tracks" = "num_tracks"),
         selected = "track_length"
       )
-      # filter3 <- var_3[1],
-      # filter4 <- var_3[2]
+      # filter3 <- var_3[[1]],
+      # filter4 <- var_3[[2]]
     ),
     mainPanel(
       plotOutput(outputId = "bar_graph")
