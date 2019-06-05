@@ -106,7 +106,7 @@ color_input <- selectInput(inputId = "color",
 
 # Create tabPanel for page ----------------------------------------------------
 response_two <- tabPanel(
-  "Page 2",
+  "Lyrics",
   titlePanel("Lyrics Through the Decades"),
   sidebarLayout(
     sidebarPanel(

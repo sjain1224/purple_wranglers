@@ -34,7 +34,7 @@ var <- sliderInput("filter1",
                    value = 100,
                    step = 5)
 var_1 <- sliderInput("filter2", "Maximum number of tracks on album",
-                      0, 100, 18, step = 1)
+                      1, 666, 200, step = 1)
 var_3 <- sliderInput("filter3", "Number of weeks on Billboard Top 200",
                     0, 52, c(0, 52), step = 1)
 
