@@ -226,5 +226,5 @@ response_three <- tabPanel("Genre Popularity Over the Years",
              those albums’ genre being Rock. Or could be fact that newer albums and other genres have not had as much time to get established 
             as a great. All we can say for certain is that the older albums and rock albums were generally regarded as the Greatest 500 Albums 
              of All Time as decided by Rolling Stones!"),
-                             column(width = 1))
+                             column(width = 1))))
 )
