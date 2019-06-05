@@ -190,52 +190,40 @@ displayThreePlot2 <- function(input) {
            yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 }
 
-
-# --- What to add to tab panel --- 
-#
-# tabPanel("Genre Popularity Over the Years",
-#         sidebarLayout(
-#           sidebarPanel(
-#             selectInput("genre", "Genre:",
-#                         choices = c("All", "Blues", "Classical", 
-#                                     "Electronic", "Folk", "Funk / Soul",
-#                                    "Hip Hop", "Jazz", "Pop",
-#                                     "Reggae", "Rock"),
-#                        selected= "All"),
-#             selectInput("decade", "Decade:",
-#                         choices = c("All", "1950", "1960", 
-#                                    "1970", "1980", "1990",
-#                                    "2000", "2010"),
-#                         selected= "All")
-#           ),
-#           mainPanel(
-#             plotlyOutput("MakeRSPlot"), 
-#            plotlyOutput("MakeRSPie")
-#          )
-#        )
-#        fluidRow(
-#         column(width = 1),
-#         column(width = 10,
-#         div(h1("Analysis:"),
-#         p("For this section, we looked at the Rolling Stones’ Top 500 Album List. More specifically, we focused on analyzing how 
-#           albums and their respective genres fared between the years 1955 and 2011. Overall, as a trend, older albums were more 
-#           likely to make the list and that newer albums struggled to get on. This shows that older albums tend to be regarded as 
-#           the greatest. Also, in regards to genre popularity, Rock has consistently performed well over the years and has the most
-#           appearances on the list with 318 albums alone; which makes up roughly 64% of the entire list."),  
-#          p("As greatest is subjective, this could be due to a variety of reasons, whether it is because older albums are just better 
-#             than the music being released more recently, a bias from the critics, who probably grew up listening the older albums and 
-#             those albums’ genre being Rock. Or could be fact that newer albums and other genres have not had as much time to get established 
-#             as a great. All we can say for certain is that the older albums and rock albums were generally regarded as the Greatest 500 Albums 
-#             of All Time as decided by Rolling Stones!"),
-#          style = "background-color:#4e5d6c; padding:10px")),
-#          column(width = 1))
-#
-# --- What to add to server ---
-#
-#   output$MakeRSPlot <- renderPlotly ({
-# displayThreePlot(input)
-# })
-#
-# output$MakeRSPie <- renderPlotly ({
-#  displayThreePlot2(input)
-# })
+response_three <- tabPanel("Genre Popularity Over the Years",
+                           sidebarLayout(
+                             sidebarPanel(
+                               selectInput("genre", "Genre:",
+                                           choices = c("All", "Blues", "Classical", 
+                                                       "Electronic", "Folk", "Funk / Soul",
+                                                       "Hip Hop", "Jazz", "Pop",
+                                                       "Reggae", "Rock"),
+                                           selected= "All"),
+                               selectInput("decade", "Decade:",
+                                           choices = c("All", "1950", "1960", 
+                                                       "1970", "1980", "1990",
+                                                       "2000", "2010"),
+                                           selected= "All")
+                             ),
+                             mainPanel(
+                               plotlyOutput("MakeRSPlot"), 
+                               plotlyOutput("MakeRSPie")
+                             )
+                           ),
+                           fluidRow(
+                             column(width = 1),
+                             column(width = 10,
+                                    div(h1("Analysis:"),
+                                        p("For this section, we looked at the Rolling Stones’ Top 500 Album List. More specifically, we focused on analyzing how 
+           albums and their respective genres fared between the years 1955 and 2011. Overall, as a trend, older albums were more 
+           likely to make the list and that newer albums struggled to get on. This shows that older albums tend to be regarded as 
+           the greatest. Also, in regards to genre popularity, Rock has consistently performed well over the years and has the most
+           appearances on the list with 318 albums alone; which makes up roughly 64% of the entire list."),  
+                                        p("As greatest is subjective, this could be due to a variety of reasons, whether it is because older albums are just better 
+             than the music being released more recently, a bias from the critics, who probably grew up listening the older albums and 
+             those albums’ genre being Rock. Or could be fact that newer albums and other genres have not had as much time to get established 
+            as a great. All we can say for certain is that the older albums and rock albums were generally regarded as the Greatest 500 Albums 
+             of All Time as decided by Rolling Stones!"),
+                                        style = "background-color:#4e5d6c; padding:10px")),
+                             column(width = 1))
+)
