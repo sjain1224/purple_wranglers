@@ -12,7 +12,8 @@ library("ggplot2")
 
 # Read in my csv file
 two_data <- read.csv(
-  "data/billboard_lyrics_1964-2015.csv", stringsAsFactors = F)
+  "data/billboard_lyrics_1964-2015.csv", stringsAsFactors = F,
+  encoding = "latin1")
 
 
 # Create Table of Top Common Words by Decade ----------------------------------
