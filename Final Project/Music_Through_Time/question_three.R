@@ -218,49 +218,28 @@ response_three <- tabPanel("Genre Popularity",
                                            choices = c("All", "1950", "1960",
                                                        "1970", "1980", "1990",
                                                        "2000", "2010"),
-                                           selected = "All")
+                                           selected = "All"),
+                               br(), hr(), h4("What Trends Do You See?"),
+                               br(), p("Two plots are available for you to
+                                       interact with. Both are drawn from
+                                       Rolling Stones 500 Greatest Albums of
+                                       all Time list and centers on looking
+                                       at how genres fared over time. The first
+                                       one illustrates a timeline of the list,
+                                       broken down by genres. Hover over each
+                                       point to view an individual album's
+                                       rank, title, artist and the year it was
+                                       released. The second one displays
+                                       another glimpse into genre popularity
+                                       through genre counts in total or
+                                       filtered by decade. Explore the charts
+                                       and see which genre has remained
+                                       victorious over time")
                              ),
                              mainPanel(
                                plotlyOutput("MakeRSPlot"),
-                               br(),
+                               br(), br(),
                                plotlyOutput("MakeRSPie")
                              )
-                           ),
-                           fluidRow(
-                             column(width = 1),
-                             column(width = 10,
-                                    div(h1("Analysis:"),
-                                        p("For this section, we looked at the
-                                        Rolling Stones Top 500 Album List.
-                                        More specifically, we focused on
-                                        analyzing how albums and their
-                                        respective genres fared between
-                                        the years 1955 and 2011. Overall,
-                                        as a trend, older albums were more
-                                        likely to make the list and that newer
-                                        albums struggled to get on. This shows
-                                        that older albums tend to be regarded as
-                                        the greatest. Also, in regards to genre
-                                        popularity, Rock has consistently
-                                        performed well over the years and has
-                                          the most appearances on the list with
-                                          318 albums alone; which makes up
-                                          roughly 64% of the entire list."),
-                                        p("As greatest is subjective, this
-                                        could be due to a variety of reasons,
-                                        whether it is because older albums are
-                                        just better than the music being
-                                        released more recently, a bias from
-                                        the critics, who probably grew up
-                                        listening the older albums and those
-                                        album's genre being Rock. Or could be
-                                        fact that newer albums and other genres
-                                        have not had as much time to get
-                                        established as a great. All we can say
-                                        for certain is that the older albums
-                                        and rock albums were generally
-                                        regarded as the Greatest 500 Albums
-                                          of All Time as decided by
-                                          Rolling Stones!"),
-                             column(width = 1))))
+                           )
 )
