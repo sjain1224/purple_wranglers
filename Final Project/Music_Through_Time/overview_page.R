@@ -1,4 +1,3 @@
-library(shiny)
 
 intro <- paste("Ever since Rock and Roll, American Music has been in a constant 
      decline. Or at least, that is what people say. We are going to rock
@@ -51,13 +50,13 @@ overview <- tabPanel(
   "Overview",
   titlePanel("Overview of American Music"),
   intro,
+  tags$img(src = "rock.gif", width = "100px", height = "100px"),
   h3("Our Data Sets"),
   h4("Data Source 1 - Billboard 1964-2015 Songs + Lyrics"),
   set_one_info,
   h4("Data Source 2 - Rolling Stone's 500 Greatest Albums"),
   set_two_info,
-  h4("Data Source 3 - *Billboard 1963-2019 Top 200 Albums Per Week*"),
+  h4("Data Source 3 - Billboard 1963-2019 Top 200 Albums Per Week"),
   set_three_info_one,
-  set_three_info_two,
-  tags$img(src="rock.gif", width = "100px", height = "100px")
+  set_three_info_two
 )
