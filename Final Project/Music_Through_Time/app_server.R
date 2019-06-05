@@ -14,7 +14,7 @@ one_data <- one_data %>%
          num_tracks = round(mean(length, na.rm = T), 0), num_wks = n())
 
 
-function(input, output, session) {
+server <- function(input, output) {
   
   # Filter the movies, returning a data frame
   one <- reactive({
