@@ -1,6 +1,5 @@
 # Data Question Three
-library(dplyr)
-library(shiny)
+
 three_data <- read.csv("../../data/albumlist.csv", stringsAsFactors = F, fileEncoding="latin1")
 
 # Breaking down Genres into 10 core genres (Tedious, Extensive)
@@ -118,16 +117,14 @@ displayThreePlot <- function(input) {
   } else if (input$genre == "Reggae") {
     three_data_plot <- three_data %>%
       filter(Genre == "Reggae")
-  } else if (input$genre == "Rock") {
+  } else {
     three_data_plot <- three_data %>%
       filter(Genre == "Rock")
-  } else {
-    three_data_plot <- three_data
   }
   
   # Creates a Scatterplot based on a Genre and its albums from
   # 1955 - 2011
-  rs_plot <- plot_ly(three_data_plot, x = ~Year, y = ~Number, color = ~Genre,
+  make_three_plot <- plot_ly(three_data_plot, x = ~Year, y = ~Number, color = ~Genre,
                      type = 'scatter', mode = 'markers',  
                      marker = list(size=10 , opacity=0.5), 
                      text = ~paste('Rank:', Number,
@@ -139,3 +136,5 @@ displayThreePlot <- function(input) {
            xaxis = list(title = 'Year', showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
            yaxis = list(title = 'Rank', showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 }
+  
+  
