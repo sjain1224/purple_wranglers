@@ -208,6 +208,7 @@ response_three <- tabPanel("Genre Popularity Over the Years",
                              ),
                              mainPanel(
                                plotlyOutput("MakeRSPlot"), 
+                               '<br>',
                                plotlyOutput("MakeRSPie")
                              )
                            ),
@@ -215,7 +216,7 @@ response_three <- tabPanel("Genre Popularity Over the Years",
                              column(width = 1),
                              column(width = 10,
                                     div(h1("Analysis:"),
-                                        p("For this section, we looked at the Rolling Stones’ Top 500 Album List. More specifically, we focused on analyzing how 
+                                        p("For this section, we looked at the Rolling Stones Top 500 Album List. More specifically, we focused on analyzing how 
            albums and their respective genres fared between the years 1955 and 2011. Overall, as a trend, older albums were more 
            likely to make the list and that newer albums struggled to get on. This shows that older albums tend to be regarded as 
            the greatest. Also, in regards to genre popularity, Rock has consistently performed well over the years and has the most
@@ -225,6 +226,5 @@ response_three <- tabPanel("Genre Popularity Over the Years",
              those albums’ genre being Rock. Or could be fact that newer albums and other genres have not had as much time to get established 
             as a great. All we can say for certain is that the older albums and rock albums were generally regarded as the Greatest 500 Albums 
              of All Time as decided by Rolling Stones!"),
-                                        style = "background-color:#4e5d6c; padding:10px")),
                              column(width = 1))
 )
