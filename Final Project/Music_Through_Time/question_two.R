@@ -82,9 +82,9 @@ word_table <- non_stop_words %>%
   select(word, Year, decade) %>%
   group_by(word, Year) %>%
   add_count(word, name = "year_occurrences") %>%
-  ungroup() %>% 
-  group_by(word, decade) %>% 
-  add_count(word, name = "decade_occurrences") %>% 
+  ungroup() %>%
+  group_by(word, decade) %>%
+  add_count(word, name = "decade_occurrences") %>%
   distinct(word, Year, decade, year_occurrences, decade_occurrences) %>%
   rename(term = word) %>%
   arrange(decade)
@@ -98,6 +98,12 @@ y_axis_var <- selectInput(inputId = "y_var",
                           choices = top_20,
                           selected = top_20[1])
 
+# Store a selectInput() to determine the color of the chart's points
+color_input <- selectInput(inputId = "color",
+                           label = "Choose Color",
+                           choices = c("black", "blue", "red", "orange",
+                                       "green", "purple"))
+
 # Create tabPanel for page ----------------------------------------------------
 response_two <- tabPanel(
   "Page 2",
@@ -105,7 +111,8 @@ response_two <- tabPanel(
   sidebarLayout(
     sidebarPanel(
       # Accept y-axis input
-      y_var <- y_axis_var
+      y_var <- y_axis_var,
+      color <- color_input
     ),
     mainPanel(
       # Plot the output with the name "line"

@@ -95,7 +95,8 @@ server <- function(input, output) {
     
     # Plot the line chart
     my_line <- ggplot(data = line_info) +
-      geom_line(mapping = aes(x = decade, y = decade_occurrences)) +
+      geom_line(mapping = aes(x = decade, y = decade_occurrences),
+                color = input$color) +
       theme_classic() +
       labs(title = paste0("Occurrences of \"", input$y_var, "\" over Decades"),
            x = "Decade",
@@ -114,7 +115,7 @@ server <- function(input, output) {
     # Plot the scatterplot
     my_point <- ggplot(data = line_info) +
       geom_point(mapping = aes(x = Year, y = year_occurrences, alpha = 0.2,
-                               size = year_occurrences)) +
+                               size = year_occurrences), color = input$color) +
       scale_size_continuous(range = c(0.5, 16)) +
       theme_classic() +
       theme(panel.border = element_rect(color = "black", fill = NA, 
