@@ -1,6 +1,4 @@
-
-link_one <- tags$a(href = "www.smithsonianmag.com/smart-news/science-proves-pop-music-has-actually-gotten-worse-8173368/",
-                   "Or at least, that is what people say.")
+link_one <- htmlOutput("link_attention", inline = T)
 
 intro <- paste("Ever since Rock and Roll, American Music has been in a constant 
      decline.", link_one, "We are going to rock
