@@ -129,13 +129,13 @@ displayThreePlot1 <- function(input) {
   # Creates a Scatterplot based on a Genre and its albums from
   # 1955 - 2011
   MakeRSPlot <- plot_ly(three_data_plot, x = ~Year, y = ~Number, color = ~Genre,
-                     type = 'scatter', mode = 'markers', size = ~Number, 
-                     marker = list(size=10 , opacity=0.5), 
-                     text = ~paste('Rank:', Number,
-                                   '<br>Album:', Album,
-                                   '<br>Artist:', Artist,
-                                   '<br>Year:', Year), 
-                     hoverinfo = "text") %>%
+                        type = 'scatter', mode = 'markers', size = ~Number, 
+                        marker = list(size=10 , opacity=0.5), 
+                        text = ~paste('Rank:', Number,
+                                      '<br>Album:', Album,
+                                      '<br>Artist:', Artist,
+                                      '<br>Year:', Year), 
+                        hoverinfo = "text") %>%
     hide_colorbar() %>%
     layout(title = 'Rolling Stones Top 500 Albums', margin = list(t = "110"), 
            xaxis = list(title = 'Year', showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
@@ -191,7 +191,7 @@ displayThreePlot2 <- function(input) {
 }
 
 
-# --- what to add to tab panel --- 
+# --- What to add to tab panel --- 
 #
 # tabPanel("Genre Popularity Over the Years",
 #         sidebarLayout(
@@ -231,7 +231,6 @@ displayThreePlot2 <- function(input) {
 #          column(width = 1))
 #
 # --- What to add to server ---
-#
 #
 #   output$MakeRSPlot <- renderPlotly ({
 # displayThreePlot(input)
