@@ -2,7 +2,7 @@
 library(plotly)
 library(readr)
 
-three_data <- read_csv("../../data/albumlist.csv",
+three_data <- read_csv("data/albumlist.csv",
                        local = locale(encoding = "latin1"))
                        
 # Breaking down Genres into 10 core genres (Tedious, Extensive)

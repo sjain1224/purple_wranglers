@@ -1,0 +1,13 @@
+name: Music_Through_Time
+title: Music_Through_Time
+username:
+account: sjain1224
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 966523
+bundleId: 2132033
+url: https://sjain1224.shinyapps.io/Music_Through_Time/
+when: 1559727927.56712
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .Rapp.history|.RData|www/beatles.jpg|www/record.jpg

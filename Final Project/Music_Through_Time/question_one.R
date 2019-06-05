@@ -9,7 +9,7 @@ axis_vars <- list("Year" = "year", "Rank" = "rank",
 
 
 # Creates the database with all the columns needed
-one_data <- read.csv("../../data/billboardalbum200.csv",
+one_data <- read.csv("data/billboardalbum200.csv",
                      stringsAsFactors = F)
 one_data <- one_data %>%
   mutate(track_min = round(track_length / 100 / 60, digits = 1)) %>%
