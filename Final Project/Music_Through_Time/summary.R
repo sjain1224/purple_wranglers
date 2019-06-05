@@ -44,5 +44,8 @@ summ_resp <- tabPanel(
   ten_table,
   br(),
   h3("Takeaway #3: Rock is Rockin' the Charts"),
-  take_three
+  take_three,
+  br(),
+  tags$img(src = "giphy.gif",
+           width = "500px", height = "500px")
 )
