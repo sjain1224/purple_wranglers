@@ -1,22 +1,5 @@
 library(shiny)
 
-
-overview <- tabPanel(
-  "Overview",
-  titlePanel("Overview of American Music"),
-  intro,
-  h3("Our Data Sets"),
-  h4("Data Source 1 - Billboard 1964-2015 Songs + Lyrics"),
-  set_one_info,
-  h4("Data Source 2 - Rolling Stone's 500 Greatest Albums"),
-  set_two_info,
-  h4("Data Source 3 - *Billboard 1963-2019 Top 200 Albums Per Week*"),
-  set_three_info_one,
-  set_three_info_two
-)
-
-
-
 intro <- p("Ever since Rock and Roll, American Music has been in a constant 
            decline. Or at least, that is what people say. We are going to rock
                and roll through the history of American Music, from 1950's to
@@ -61,3 +44,17 @@ set_three_info_two <- p("The data is about the performance of U.S. albums
                         the popularity of an album can be affected by single 
                         songs so it would also be interesting to see how the top
                         albums match up with the top songs using dataset 1.")
+
+overview <- tabPanel(
+  "Overview",
+  titlePanel("Overview of American Music"),
+  intro,
+  h3("Our Data Sets"),
+  h4("Data Source 1 - Billboard 1964-2015 Songs + Lyrics"),
+  set_one_info,
+  h4("Data Source 2 - Rolling Stone's 500 Greatest Albums"),
+  set_two_info,
+  h4("Data Source 3 - *Billboard 1963-2019 Top 200 Albums Per Week*"),
+  set_three_info_one,
+  set_three_info_two
+)
