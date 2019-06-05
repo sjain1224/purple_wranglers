@@ -2,22 +2,12 @@
 
 # Preparation -----------------------------------------------------------------
 
-# Load in the "dplyr" package
+# Load in packages
 library("dplyr")
-
-# Load in the "shiny" package
 library("shiny")
-
-# Load in the "tidyr" package
 library("tidyr")
-
-# Load in the "tidytext" package
 library("tidytext")
-
-# Load in the "wordcloud" package
 library("wordcloud")
-
-# Load in the "ggplot" package
 library("ggplot2")
 
 # Read in my csv file
