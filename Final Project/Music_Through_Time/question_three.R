@@ -1,4 +1,5 @@
 # Data Question Three
+library(plotly)
 three_data <- read.csv("../../data/albumlist.csv", stringsAsFactors = F, fileEncoding = "latin1")
 
 # Breaking down Genres into 10 core genres (Tedious, Extensive)
