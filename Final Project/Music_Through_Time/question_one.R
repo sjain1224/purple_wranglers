@@ -19,20 +19,29 @@ one_data <- one_data %>%
   select(album, rank, artist, year, month, track_min, length) %>%
   mutate(mean_rank = round(mean(rank, na.rm = T), 0),
          track_length = round(mean(track_min, na.rm = T), 1),
-         num_tracks = round(mean(length, na.rm = T), 0), num_wks = n())
+         num_tracks = round(mean(length, na.rm = T), 0), num_wks = n()) 
+
+# Drop the first row
+one_data <- one_data[-1,]
 
 # Create graph of specified variables ----------------------------------------
 
 # Get specified variables from user
-var <- sliderInput("one_min_length", "Maximum length of album (in minutes)",
-                    3, 800, 100, step = 5)
-var_1 <- sliderInput("one_track_num", "Minimum number of tracks on album",
+var <- sliderInput("filter1",
+                   label = "Maximum length of album (in minutes)",
+                   min = 5,
+                   max = 800,
+                   value = 100,
+                   step = 5)
+var_1 <- sliderInput("filter2", "Maximum number of tracks on album",
                       0, 100, 18, step = 1)
-# var_2 <- sliderInput("one_year", "Year on Billboard Top 200", 1963, 2019,
-#                      value = c(1963, 2019),
-#                      sep = "")
-# var_3 <- sliderInput("one_time_on", "Number of weeks on Billboard Top 200",
-#                      0, 52, c(0, 52), step = 1)
+var_3 <- sliderInput("filter3", "Number of weeks on Billboard Top 200",
+                    0, 52, c(0, 52), step = 1)
+
+display <-  selectInput( "y_var_1", "By length in minutes or tracks",
+  choices = list("Minutes" = "track_length",
+                 "Number of Tracks" = "num_tracks"),
+  selected = "track_length")
 
 # Create tabPanel for the page
 response_one <- tabPanel(
@@ -43,14 +52,8 @@ response_one <- tabPanel(
       #Accepts user input
       filter1 <- var,
       filter2 <- var_1,
-      selectInput(
-        "y_var_1",
-        "By length in minutes or tracks",
-        choices = list("Minutes" = "track_length", "Number of Tracks" = "num_tracks"),
-        selected = "track_length"
-      )
-      # filter3 <- var_3[[1]],
-      # filter4 <- var_3[[2]]
+      filter3 <- var_3,
+      y_var_1 <- display
     ),
     mainPanel(
       plotOutput(outputId = "bar_graph")

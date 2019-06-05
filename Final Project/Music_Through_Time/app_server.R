@@ -4,13 +4,14 @@ library(dplyr)
 
 server <- function(input, output) {
   output$bar_graph <- renderPlot({
-    graph_info <- one_data %>%
-      filter(track_length <= input$filter1, num_tracks <= filter2,
-             num_wks >= filter3, num_wks <= filter4)
+    graph_info <- one_data %>% 
+      filter((track_length <= input$filter1) & (num_tracks <= input$filter2) &
+             (num_wks >= input$filter3[1]) & (num_wks <= input$filter3[2]))
     
     my_graph <- ggplot(graph_info) +
-      geom_count(mapping = aes_string(x = year, y = num_wks))+
-      theme_classic()
+      geom_count(mapping = aes_string(x = "year", y = input$y_var_1)) +
+      theme_classic() +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1))
     my_graph
   })
 
