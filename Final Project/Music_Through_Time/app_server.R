@@ -38,7 +38,7 @@ server <- function(input, output) {
     my_line
   })
   
-  output$summ_top_ten <- renderDataTable({
+  output$summ_top_ten <- renderTable({
     top_ten_words
   })
   

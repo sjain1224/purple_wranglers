@@ -12,7 +12,7 @@ take_two <- p("While many people claim that music has lost its meaning and
               per decade, and the overall trend of lyric use from the 1960's to
               now, not a lot has changed.")
 
-ten_table <-dataTableOutput(
+ten_table <-tableOutput(
   outputId = "summ_top_ten"
 )
 
