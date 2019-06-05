@@ -92,12 +92,39 @@ server <- function(input, output, session) {
   # Create the line chart for question two
   output$line_two <- renderPlot({
     # Filter to the specified word
-    line_info <- word_table %>% 
-      filter(term == input$y_line) 
+    line_info <- word_table %>%
+      filter(term == input$y_var)
     
     # Plot the line chart
     my_line <- ggplot(data = line_info) +
-      geom_line(mapping = aes(x = decade, y = occurrences))
+      geom_line(mapping = aes(x = decade, y = decade_occurrences)) +
+      theme_classic() +
+      labs(title = paste0("Occurrences of \"", input$y_var, "\" over Decades"),
+           x = "Decade",
+           y = "Occurrences") +
+      theme(panel.border = element_rect(color = "black", fill = NA, 
+                                        size = 3),
+            plot.title = element_text(hjust = 0.5))
     my_line
+  })
+  
+  output$point_two <- renderPlot({
+    # Filter to the specified word
+    line_info <- word_table %>% 
+      filter(term == input$y_var)
+    
+    # Plot the scatterplot
+    my_point <- ggplot(data = line_info) +
+      geom_point(mapping = aes(x = Year, y = year_occurrences, alpha = 0.2,
+                               size = year_occurrences)) +
+      scale_size_continuous(range = c(0.5, 16)) +
+      theme_classic() +
+      theme(panel.border = element_rect(color = "black", fill = NA, 
+                                        size = 3),
+            plot.title = element_text(hjust = 0.5)) +
+      labs(title = paste0("Occurrences of \"", input$y_var, "\" over Years"),
+           x = "Year",
+           y = "Occurrences")
+    my_point
   })
 }
