@@ -1,6 +1,5 @@
 # Data Question Three
-
-three_data <- read.csv("../../data/albumlist.csv", stringsAsFactors = F, fileEncoding="latin1")
+three_data <- read.csv("../../data/albumlist.csv", stringsAsFactors = F, fileEncoding = "latin1")
 
 # Breaking down Genres into 10 core genres (Tedious, Extensive)
 
@@ -81,9 +80,9 @@ three_data$Genre[three_data$Genre == "Rock, Blues"] <- "Rock"
 three_data$Genre[three_data$Genre == "Rock,ÊBlues"] <- "Rock"
 three_data$Genre[three_data$Genre == "Rock,ÊPop"] <- "Rock"
 
-# Fixing other characters
+# Fixing other issues
 three_data$Artist[three_data$Artist == "Stan GetzÊ/ÊJoao GilbertoÊfeaturingÊAntonio Carlos Jobim"] <- "Stan Getz and Joao Gilberto featuring Antonio Carlos Jobim"  
-
+three_data$Album[three_data$Album == "Honky Chteau"] <- "Honky Chateau"
 
 # Function for Server to filter Genre and generate plot
 displayThreePlot <- function(input) {
@@ -124,17 +123,17 @@ displayThreePlot <- function(input) {
   
   # Creates a Scatterplot based on a Genre and its albums from
   # 1955 - 2011
-  make_three_plot <- plot_ly(three_data_plot, x = ~Year, y = ~Number, color = ~Genre,
+  make_three_plot <- plot_ly(three_data_plot, x = ~Year, y = ~Number, color = ~Number,
                      type = 'scatter', mode = 'markers',  
                      marker = list(size=10 , opacity=0.5), 
                      text = ~paste('Rank:', Number,
                                    '<br>Album:', Album,
-                                   '<br>Year Released:', Year), 
+                                   '<br>Artist:', Artist,
+                                   '<br>Year:', Year), 
                      hoverinfo = "text") %>%
     hide_colorbar() %>%
     layout(title = 'Rolling Stones Top 500 Albums', margin = list(t = "110"), 
            xaxis = list(title = 'Year', showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
            yaxis = list(title = 'Rank', showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 }
-  
   
