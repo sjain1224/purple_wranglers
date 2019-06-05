@@ -18,7 +18,7 @@ library("tidytext")
 library("wordcloud")
 
 # Load in the "ggplot" package
-library("ggplot")
+library("ggplot2")
 
 # Read in my csv file
 two_data <- read.csv(
